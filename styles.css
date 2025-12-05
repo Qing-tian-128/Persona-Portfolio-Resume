@@ -124,13 +124,20 @@ footer {
 
 /* Dark Mode Styles */
 [data-theme='dark'] {
-    background-size: cover; /* Make the image cover the entire page */
-    background-position: center center; /* Center the background image */
-    background-attachment: fixed; /* Keep the background fixed while scrolling */
-    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column; /* Align elements vertically */
+    position: relative;
+    color: #e0e0e0; /* Light text color for dark mode */
+}
+
+/* Dark Mode Background Overlay */
+[data-theme='dark']::before {
+    content: "";
+    position: fixed; /* Changed to fixed to ensure full coverage */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ensure the overlay covers the full viewport height */
+    background: rgba(0, 0, 0, 0.7); /* Dark transparent overlay */
+    z-index: -1; /* Ensure the overlay is below content */
 }
 
 /* Header */
@@ -234,7 +241,7 @@ footer {
 
 [data-theme='dark'] .project {
     display: flex;
-    background-color: rgba(33, 33, 33, 0.75); /* Dark background for projects */
+    background-color: rgba(33, 33, 33, 0.1); /* Dark background for projects */
     margin-bottom: 30px;
     border-radius: 12px; /* Slightly rounded corners */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* 3D shadow effect */
@@ -290,63 +297,132 @@ footer {
     background-color: #666;  /* Lighter background on hover */
 }
 
-/* About Me Section - Dark Mode */
-[data-theme='dark'] #about {
-    padding: 40px;
-    text-align: center;
-    color: white;
-}
-
-[data-theme='dark'] .about-content {
-    background-color: rgba(33, 33, 33, 0.75); /* Dark background with slight transparency */
-    border-radius: 12px; /* Rounded corners for the box */
-    padding: 30px; /* Padding inside the section */
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Box shadow for 3D effect */
-}
-
-[data-theme='dark'] .profile-img {
-    border-radius: 0; /* Remove border-radius for the profile image */
-    border: none; /* Remove border around the image */
-}
-
+/* About Section Text for Dark Mode */
 [data-theme='dark'] .about-right {
     font-size: 1.1em;
-    color: #e0e0e0; /* White text for the about-right section */
+    color: #e0e0e0; /* Light text for the about-right section */
+    line-height: 1.8;
 }
 
-[data-theme='dark'] .about-right h2 {
-    color: #90caf9; /* Light blue color for section headers */
-}
-
-/* Section Box Styling */
+/* Section Box Styling - Removed for Dark Mode */
 [data-theme='dark'] .section-box {
-    background-color: rgba(33, 33, 33, 0.75); /* Dark background with transparency */
-    border-radius: 12px;
-    padding: 20px;
-    margin: 30px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 3D effect with box-shadow */
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
-    color: #e0e0e0; /* Light text color */
+    background-color: transparent; /* Remove the background */
+    box-shadow: none; /* No shadow for a clean look */
+    padding: 0; /* Remove padding */
+    margin: 50px 0; /* Keep some margin for spacing */
+    color: white; /* Light text color */
+    text-align: left;
 }
 
+/* Section Headings - Dark Mode */
 [data-theme='dark'] .section-box h2 {
-    color: #90caf9; /* Light blue color for section titles */
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #ffe082; /* Light blue for section headers */
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
 }
 
-/* Section Box Content */
+/* Add underline for the heading in dark mode */
+[data-theme='dark'] .section-box h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #ffe082;
+    margin-top: 6px;
+    border-radius: 2px;
+}
+
+/* Subheadings */
 [data-theme='dark'] .section-box h3 {
-    color: #e0e0e0; /* Light text color for subsection headers */
+    margin-top: 25px;
+    font-size: 1.5em;
+    color: #e0e0e0; /* Light text color for subheadings */
+    font-weight: 600;
+    position: relative;
+}
+
+/* Add gold accent for subheading markers */
+[data-theme='dark'] .section-box h3::before {
+    content: "✦";
+    margin-right: 8px;
+    color: #FFD700; /* Gold accent for the marker */
+}
+
+/* List Styling */
+[data-theme='dark'] .section-box ul {
+    padding-left: 0;
+    margin-top: 15px;
 }
 
 [data-theme='dark'] .section-box ul li {
-    color: #e0e0e0; /* White text color for list items */
+    margin-bottom: 12px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.6;
 }
 
+/* List Item Markers for Dark Mode */
+[data-theme='dark'] .section-box ul li::before {
+    content: "➤";
+    position: absolute;
+    left: 0;
+    color: #90caf9; /* Light blue color for markers in dark mode */
+    font-size: 1em;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    [data-theme='dark'] .about-right {
+        text-align: center; /* Center the text for mobile */
+        font-size: 1.2em; /* Adjust font size for better readability */
+    }
+
+    [data-theme='dark'] .section-box {
+        padding: 0 15px; /* Add some padding for better spacing */
+        margin: 20px 0; /* Adjust margin for smaller screens */
+    }
+
+    [data-theme='dark'] .section-box h2 {
+        font-size: 20px; /* Adjust heading font size */
+    }
+
+    [data-theme='dark'] .section-box h3 {
+        font-size: 18px; /* Adjust subheading font size */
+    }
+
+    [data-theme='dark'] .section-box ul li {
+        font-size: 1em; /* Adjust list item font size */
+    }
+}
+
+@media (max-width: 480px) {
+    [data-theme='dark'] .section-box h2 {
+        font-size: 18px; /* Adjust for very small screens */
+    }
+
+    [data-theme='dark'] .section-box h3 {
+        font-size: 16px; /* Adjust subheading font size */
+    }
+
+    [data-theme='dark'] .section-box ul li {
+        font-size: 0.9em; /* Adjust list item font size for very small screens */
+    }
+
+    [data-theme='dark'] .about-right {
+        font-size: 1.1em; /* Adjust main text size for small devices */
+    }
+
+    [data-theme='dark'] .section-box {
+        padding: 0 10px; /* Further reduce padding for tight mobile layouts */
+    }
+}
 
 /* Contact Section */
 [data-theme='dark'] .contact-info {
-    background-color: rgba(33, 33, 33, 0.85);  /* Dark background for contact info */
+    background-color: rgba(33, 33, 33, 0.1);  /* Dark background for contact info */
     color: #e0e0e0;  /* Light text for contact info */
 }
 
@@ -355,7 +431,7 @@ footer {
 }
 
 [data-theme='dark'] .contact-form {
-    background-color: rgba(33, 33, 33, 0.7);  /* Dark background for the contact form */
+    background-color: rgba(33, 33, 33, 0.1);  /* Dark background for the contact form */
     color: #e0e0e0;  /* Light text for form fields */
 }
 
@@ -773,6 +849,7 @@ footer {
     flex: 2;
     text-align: left;
     font-size: 1.1em;
+    line-height: 1.8;
 }
 
 .about-right h2 {
@@ -788,126 +865,189 @@ ul li {
     margin-bottom: 10px;
 }
 
-/* Box Styling for Sections */
-.section-box {
-    background-color: rgba(255, 255, 255, 0.8); /* Light purple glass effect */
-    backdrop-filter: blur(10px); /* Glass blur effect */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    margin: 30px 0;
-    text-align: left;
-    color: #333;
-}
-
-.section-box h2 {
-    color: #007bff; /* Light blue for section headers */
-    font-size: 2em;
-}
-
-.section-box h3 {
-    margin-top: 15px;
-    font-size: 1.4em;
-}
-
-.section-box ul {
-    padding-left: 20px;
-}
-
-.section-box ul li {
-    margin-top: 5px;
-    margin-bottom: 8px;
-}
-
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .right-header {
-        margin-top: 10px;
-    }
-
-    #about h1 {
-        font-size: 24px;
+    #about {
+        padding: 40px 20px;
     }
 
     .about-content {
-        flex-direction: column;
+        flex-direction: column; /* Stack profile image and text on mobile */
         align-items: center;
+        text-align: center;
     }
 
     .about-left {
         margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .about-right {
-        text-align: center;
-    }
-
-    .section-box {
-        padding: 0 10px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    h3 {
-        font-size: 18px;
+        margin-bottom: 20px; /* Space between image and text */
     }
 
     .profile-img {
-        width: 80%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-right h2 {
+        font-size: 2em;
+    }
+
+    .about-right p {
+        font-size: 1.1em;
+    }
+
+    ul li {
+        font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    .profile-picture img {
-        width: 40px;
-        height: 40px;
+    .profile-img {
+        width: 150px; /* Smaller image on mobile */
+        height: 150px;
     }
 
-    .name-title {
-        font-size: 18px;
-    }
-
-    .right-header nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .right-header nav ul li {
-        margin-bottom: 10px;
-    }
-
-    #about h1 {
-        font-size: 20px;
-    }
-
-    .about-content {
-        flex-direction: column;
+    .about-right h2 {
+        font-size: 1.6em;
     }
 
     .about-right p {
-        font-size: 16px;
+        font-size: 1em;
     }
 
-    .section-box h2 {
-        font-size: 18px;
+    ul li {
+        font-size: 0.9em;
+    }
+}
+
+/* Box Styling for Sections */
+.section-box {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 50px 0;
+    text-align: left;
+    color: white; /* keep text visible on your background */
+}
+
+/* Section Headings */
+.section-box h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #ffe082; /* golden accent */
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-box h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #ffe082;
+    margin-top: 6px;
+    border-radius: 2px;
+}
+
+/* Subheadings */
+.section-box h3 {
+    margin-top: 25px;
+    font-size: 1.5em;
+    color: #aad4ff; /* light blue accent */
+    font-weight: 600;
+    position: relative;
+}
+
+.section-box h3::before {
+    content: "✦";
+    margin-right: 8px;
+    color: #FFD700; /* gold accent */
+}
+
+/* Optional supporting shade for lists or subtle text */
+.section-box ul li {
+    color: #E0E0E0; /* supporting neutral shade */
+}
+
+
+/* Lists */
+.section-box ul {
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.section-box ul li {
+    margin-bottom: 12px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.section-box ul li::before {
+    content: "➤";
+    position: absolute;
+    left: 0;
+    color: #ffe082;
+    font-size: 1em;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #about {
+        padding: 40px 20px;
     }
 
-    .section-box h3 {
-        font-size: 16px;
+    .about-content {
+        flex-direction: column; /* Stack profile image and text on mobile */
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-left {
+        margin-right: 0;
+        margin-bottom: 20px; /* Space between image and text */
+    }
+
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-right h2 {
+        font-size: 2em;
+    }
+
+    .about-right p {
+        font-size: 1.1em;
+    }
+
+    ul li {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-img {
+        width: 150px; /* Smaller image on mobile */
+        height: 150px;
+    }
+
+    .about-right h2 {
+        font-size: 1.6em;
+    }
+
+    .about-right p {
+        font-size: 1em;
+    }
+
+    ul li {
+        font-size: 0.9em;
     }
 }
 
 /* Contact Section */
 #contact {
-    background-image: url('background.jpg');
     background-size: cover;
     background-position: center center; /* Center the background image */
     background-attachment: fixed;
