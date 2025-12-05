@@ -1,10 +1,12 @@
 // Meenu Toggle
-const toggleBtn = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+const toggleBtn = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-toggleBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+toggleBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  toggleBtn.classList.toggle("hide");
 });
+
 
 // Dark Mode Toggle
 const themeToggleButton = document.getElementById("theme-toggle");
