@@ -109,6 +109,34 @@ nav ul li a.active {
     display: flex;
 }
 
+/* Hide menu by default */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background: #333;
+  padding: 1.5rem;
+}
+
+/* Show menu when active */
+.nav-links.active {
+  display: flex;
+}
+
+/* Position toggle button properly */
+.menu-toggle {
+  font-size: 1.7rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;        /* keeps icon above menu */
+}
+
+/* Hide toggle icon when menu is open (optional, clean UI) */
+.menu-toggle.hide {
+  display: none;
+}
+
 /* Mobile: max-width 768px */
 @media (max-width: 768px) {
     .menu-toggle {
@@ -144,6 +172,7 @@ nav ul li a.active {
         text-align: center;
     }
 }
+
 
 /* Dark Mode Toggle Button */
 .icon-btn {
@@ -589,7 +618,7 @@ footer {
     }
 }
 
-/* Mobile responsiveness */ 
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -611,13 +640,10 @@ footer {
     .button-container {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Center align buttons on mobile */
     }
 
     .button {
-        font-size: 1.2rem; /* Adjust font size of buttons */
-        padding: 8px 16px; /* Adjust padding for smaller buttons */
-        margin-bottom: 10px; /* Space between buttons */
+        margin-bottom: 10px;
     }
 }
 
@@ -641,9 +667,7 @@ footer {
     }
 
     .button {
-        font-size: 1rem; /* Further reduce font size for very small screens */
-        padding: 6px 12px; /* Smaller padding for smaller screens */
-        margin-bottom: 8px; /* Reduce space between buttons */
+        font-size: 14px;
     }
 }
 
