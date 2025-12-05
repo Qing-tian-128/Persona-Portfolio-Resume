@@ -91,4 +91,3 @@ clearFormButton.addEventListener('click', function() {
     // Reset all form fields
     document.getElementById("contactForm").reset();
 });
-
