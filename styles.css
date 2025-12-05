@@ -99,6 +99,52 @@ nav ul li a.active {
     font-weight: bold;  /* Make the active link bold */
 }
 
+/* Hide toggle button on desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Desktop nav menu */
+.nav-menu {
+    display: flex;
+}
+
+/* Mobile: max-width 768px */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none; /* hide menu initially */
+        width: 100%;
+        flex-direction: column;
+        margin-top: 10px;
+        background-color: #e0f2ff;
+        border-radius: 8px;
+        padding: 10px 0;
+    }
+
+    .nav-menu.active {
+        display: flex; /* show menu when toggle is active */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu ul li {
+        margin: 5px 0;
+        text-align: center;
+    }
+}
+
 /* Dark Mode Toggle Button */
 .icon-btn {
     background: none;
@@ -543,7 +589,7 @@ footer {
     }
 }
 
-/* Mobile responsiveness */
+/* Mobile responsiveness */ 
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -565,10 +611,13 @@ footer {
     .button-container {
         display: flex;
         flex-direction: column;
+        align-items: center; /* Center align buttons on mobile */
     }
 
     .button {
-        margin-bottom: 10px;
+        font-size: 1.2rem; /* Adjust font size of buttons */
+        padding: 8px 16px; /* Adjust padding for smaller buttons */
+        margin-bottom: 10px; /* Space between buttons */
     }
 }
 
@@ -592,7 +641,9 @@ footer {
     }
 
     .button {
-        font-size: 14px;
+        font-size: 1rem; /* Further reduce font size for very small screens */
+        padding: 6px 12px; /* Smaller padding for smaller screens */
+        margin-bottom: 8px; /* Reduce space between buttons */
     }
 }
 
